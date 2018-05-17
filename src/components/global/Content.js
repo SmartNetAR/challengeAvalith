@@ -5,8 +5,9 @@ class Content extends Component {
   render() {
     return (
       <div className="Content">
+        
         <header>LANGUAGES & TECHNOLOGIES</header>
-        <h1></h1>
+        
 
         <p>lorem impusm...</p>
       </div> 
