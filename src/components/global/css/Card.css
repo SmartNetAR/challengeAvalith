@@ -1,0 +1,17 @@
+
+.card {
+  margin-top: 20px;
+  width: 325px;
+  background-color: white;
+  margin-right: 15px;
+}
+
+  .card .image {
+    height: 188px;
+    background-color: lightblue;
+    width: 100%;
+  }
+
+  .card .text {
+    padding: 30px;
+  }
