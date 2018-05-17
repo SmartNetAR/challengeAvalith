@@ -1,7 +1,70 @@
-.Sidebar {
-  background-color: #222;
-  padding: 10px;
+
+.sidenav {
+  /*padding: 20px;*/
+  height: 100%;
+  width:300px;
+  position: fixed;
+  z-index: 1;
+  top: 60;
+  left: 0;
+  background-color: black;
   color: white;
-  width: 20%;
-  align-content: initial;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav .devname {
+  top: 0;
+  margin-top: 0;
+  padding-top: 31px;
+  text-align: center;
+  background-color: dimgray;
+  height: 135px;
+  width: 100%;
+}
+
+.sidenav .devname .font-dev-name {
+  height: 17px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 24px;
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1;
+  letter-spacing: 0.2px;
+  color: #ffffff;
+}
+
+.sidenav .devname .font-dev-details {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 0.5;
+  letter-spacing: 0.2px;
+  color: #ffffff;
+}
+
+.sidenav a {
+  /*padding: 8px 8px 8px 32px;*/
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
 }
