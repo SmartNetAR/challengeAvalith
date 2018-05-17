@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './css/Sidebar.css';
-import { Checkbox, ButtonGroup, Button } from 'react-bootstrap';
+import Controls from './Controls';
 
 class Sidebar extends Component {
   
@@ -14,22 +14,8 @@ class Sidebar extends Component {
             <p>35 YEARS OLD</p>
           </div>
         </div>
-        <input></input>
-        <button>Find</button>
-        <form>
-          <div className="radio">
-            <label>
-              <input type="radio" value="option1" checked={true} />
-              Front
-            </label>
-          </div>
-          <div className="radio">
-            <label>
-              <input type="radio" value="option2" />
-              Back
-            </label>
-          </div>
-        </form>
+        
+        <Controls />
 
 
       </div> 
