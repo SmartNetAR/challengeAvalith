@@ -16,11 +16,10 @@ class Card extends Component {
     return (
       <div className="card">
         <div className="image">
-          <img width={325} src={imageUrl} alt="technologieLogo" />
+          <img width={325} src={imageUrl} alt={title} />
         </div>
         <div className="text">
-          <p>{`${title}: ${details}`}</p>
-          {console.log(this.props)}
+          <p>{`${details}`}</p>
         </div>
       </div> 
     );
