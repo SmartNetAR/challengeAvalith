@@ -19,6 +19,7 @@ class Sidebar extends Component {
     if (e.target.id === "back") {
         this.setState({
           tech: "Backend"
+          //CONTENT.STATE
         })
     }else {
       this.setState({
@@ -30,6 +31,7 @@ class Sidebar extends Component {
   handleChangeInput(e) {
     this.setState({
       text: e.target.value
+      //CONTENT.STATE.FILTERTEXT = TEXT!!!
     })
 
     // if (e.keyCode === 13 ) {

@@ -4,8 +4,7 @@ import Controls from './Controls';
 
 class Sidebar extends Component {
   constructor() {
-    super(); //para que pueda acceder al obj
-    
+    super(); //para que pueda acceder al obj    
     this.state = {
     };
   }
