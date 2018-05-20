@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './css/Controls.css';
+import Content from './Content';
 // import { Checkbox, ButtonGroup, Button } from 'react-bootstrap';
 
 class Sidebar extends Component {
@@ -19,24 +20,26 @@ class Sidebar extends Component {
     if (e.target.id === "back") {
         this.setState({
           tech: "Backend"
+          
           //CONTENT.STATE
         })
+        this.props.controlFilter(e);
     }else {
       this.setState({
         tech: "Frontend"
       })
+      this.props.controlFilter(e);
     }
   }
 
   handleChangeInput(e) {
     this.setState({
       text: e.target.value
+      
       //CONTENT.STATE.FILTERTEXT = TEXT!!!
     })
-
-    // if (e.keyCode === 13 ) {
-      console.log(e.target.value)
-    // }
+    this.props.controlFilter(e);
+    // Content.state.text = this.state.text;
     
   }
 
@@ -52,7 +55,7 @@ class Sidebar extends Component {
           onChange={this.handleChangeInput}></input>
         </div>
         <p>Filter by:</p>
-        <p>{`filtrado por: ${this.state.tech} y ${this.state.text}`}</p>
+        {/* <p>{`filtrado por: ${this.state.tech} y ${this.state.text}`}</p> */}
         <form>
           <div className="radio">
             <label>

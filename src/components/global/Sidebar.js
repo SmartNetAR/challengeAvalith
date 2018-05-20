@@ -7,10 +7,16 @@ class Sidebar extends Component {
     super(); //para que pueda acceder al obj    
     this.state = {
     };
+
+    this.filtrar = this.filtrar.bind(this);
   }
 
   componentDidMount() {
 
+  }
+
+  filtrar(e){
+    this.props.Filtering(e);
   }
   
   render() {
@@ -24,7 +30,7 @@ class Sidebar extends Component {
           </div>
         </div>
         
-        <Controls />
+        <Controls controlFilter={this.filtrar}/>
 
 
       </div> 

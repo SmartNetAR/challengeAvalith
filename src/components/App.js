@@ -7,13 +7,32 @@ import Content from './global/Content';
 import Sidebar from './global/Sidebar';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = { filter: "" };
+    this.filtrar = this.filtrar.bind(this);
+  }
+  
+  filtrar(e){
+    if (e.target.id === "txtSearch") {
+      
+      this.setState({
+        filter: e.target.value
+      })
+      
+    }else{
+      this.setState.filter = e.target.id;
+      alert("option " + e.target.id);
+    }
+    // alert("Escribiendo " + this.state.filter);
+  }
   render() {
     return (
       
       <div className="App">
         <Header />
-        <Sidebar />
-        <Content />        
+        <Sidebar Filtering={this.filtrar}/>
+        <Content filtro={this.state.filter}/>        
       </div> 
     );
   }
