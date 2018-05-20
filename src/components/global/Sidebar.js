@@ -3,6 +3,16 @@ import './css/Sidebar.css';
 import Controls from './Controls';
 
 class Sidebar extends Component {
+  constructor() {
+    super(); //para que pueda acceder al obj
+    
+    this.state = {
+    };
+  }
+
+  componentDidMount() {
+
+  }
   
   render() {
     return (

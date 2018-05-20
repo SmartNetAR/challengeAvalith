@@ -9,8 +9,8 @@ class CardsContainer extends Component {
 
   render() {
     const {cards} = this.props;
-    var myCards = new Map(cards);
-    var filterCards = new Array;
+    // var myCards = new Map(cards);
+    // var filterCards = new Array;
     return (
       <div className="CardsContainer">
         <header className="Title">LANGUAGES & TECHNOLOGIES</header>
