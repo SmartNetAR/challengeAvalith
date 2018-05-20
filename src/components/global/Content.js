@@ -1,35 +1,61 @@
 import React, { Component } from 'react';
 import './css/Content.css';
-import Card from './Card';
+import PropTypes from 'prop-types';
+
 import jsonRecived from '../../data/cards.json'
+import CardsContainer from './CardsContainer';
+import PostDetails from './PostDetails';
 
 
 class Content extends Component {
+  static propTypes = {
+    filtro: PropTypes.string
+  };
+
+  constructor () {
+    super();
+
+    this.state = {
+      mode: "Dashboard",
+      // filterText: "CSS"
+    };
+  }
+
+  componentDidMount() {
+    // this.setState.filterText = filtro;
+  }
+
+  FilterArray () {
+    var tmpArray = new Array;
+    if (this.props.filtro !== '') {
+      for (var i = 0; i < jsonRecived.length; i++ ) {
+        if (jsonRecived[i].cardTitle === this.props.filtro) {
+          tmpArray.push(jsonRecived[i]);
+          console.log(jsonRecived[i]);
+        }
+      }
+    } else {
+      tmpArray = jsonRecived;
+    }
+    return tmpArray;
+  }
 
   render() {
-    return (
-      <div className="Content">
-        <header className="Title">LANGUAGES & TECHNOLOGIES</header>
-        {/* {console.log(jsonRecived)} */}
+    const {filtro} = this.props;
+    if ( this.state.mode === "Dashboard" ) {
+      var arrayCards = this.FilterArray();
 
-          {jsonRecived && jsonRecived.map( (item, key) => 
-          <Card 
-            key= {key}
-            title= {item.cardTitle} 
-            details={item.cardDescription}
-            technology={item.cardTechnology}
-            imageUrl={item.cardImageUrl}
-          />)}
+      return (
+        <div className="Content">
+          <CardsContainer cards={arrayCards} />
 
-
-        {/* <Card title="React" details="biblioteca de Facebook"/>
-        <Card title="Angular" details="framwork de Google"/>
-        <Card title="View" details="biblioteca en crecimiento"/> */}
-        {/* <ul>
-          {jsonRecived && jsonRecived.map( (item, key) => <li key = {key}>{item.cardTitle}</li> )}
-        </ul> */}
-      </div> 
-    );
+        </div> 
+      );
+    }else {
+      return (
+        <PostDetails title={this.state.filterText}/>
+      )
+    }
   }
 }
 

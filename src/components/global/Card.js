@@ -15,12 +15,9 @@ class Card extends Component {
     const { title, details, technology, imageUrl } = this.props;
     return (
       <div className="card">
-        <div className="image">
-          <img width={325} src={imageUrl} alt="technologieLogo" />
-        </div>
+        <img src={imageUrl} alt={title} />
         <div className="text">
-          <p>{`${title}: ${details}`}</p>
-          {console.log(this.props)}
+          <p>{`${details}`}</p>
         </div>
       </div> 
     );

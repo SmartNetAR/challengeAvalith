@@ -3,6 +3,21 @@ import './css/Sidebar.css';
 import Controls from './Controls';
 
 class Sidebar extends Component {
+  constructor() {
+    super(); //para que pueda acceder al obj    
+    this.state = {
+    };
+
+    this.filtrar = this.filtrar.bind(this);
+  }
+
+  componentDidMount() {
+
+  }
+
+  filtrar(e){
+    this.props.Filtering(e);
+  }
   
   render() {
     return (
@@ -15,7 +30,7 @@ class Sidebar extends Component {
           </div>
         </div>
         
-        <Controls />
+        <Controls controlFilter={this.filtrar}/>
 
 
       </div> 
