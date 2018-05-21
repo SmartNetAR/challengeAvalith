@@ -11,11 +11,13 @@ class App extends Component {
     super();
     this.state = { 
       filter: "",
-      mode: "Dashboard" 
+      // mode: "Dashboard" 
     };
     this.filtrar = this.filtrar.bind(this);
     this.reset = this.reset.bind(this);
   }
+
+  
   
   filtrar(e){
     // if (e.target.id === "txtSearch") {
@@ -31,12 +33,29 @@ class App extends Component {
     })
   }
 
+  sideIsVisible() {
+    const visibleBar = true;    
+    alert ("show bar");
+    if (visibleBar === true) {
+      alert ("show bar");
+      return <Sidebar Filtering={this.filtrar}/> 
+      
+    }
+    
+    // return <Sidebar/>
+  }
   render() {
+    const visibleBar = true;
+    const bar = visibleBar ? (<Sidebar Filtering={this.filtrar}/>
+    ) : <div></div> 
     return (
       
       <div className="App">
         <Header mode={this.reset}/>
-        <Sidebar Filtering={this.filtrar}/>
+        {bar}
+        {/* <Sidebar Filtering={this.filtrar}/> */}
+
+
         <Content filtro={this.state.filter } mode={this.state.mode}/>        
       </div> 
     );
