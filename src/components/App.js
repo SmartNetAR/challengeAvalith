@@ -18,17 +18,11 @@ class App extends Component {
   }
   
   filtrar(e){
-    if (e.target.id === "txtSearch") {
+    // if (e.target.id === "txtSearch") {
       
       this.setState({
         filter: e.target.value
       })
-      
-    }else{
-      this.setState.filter = e.target.id;
-      alert("option " + e.target.id);
-    }
-    // alert("Escribiendo " + this.state.filter);
   }
 
   reset(e) {

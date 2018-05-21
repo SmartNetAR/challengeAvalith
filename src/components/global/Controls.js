@@ -12,11 +12,11 @@ class Sidebar extends Component {
       text: ""
     };
 
-    this.handleFilterClick = this.handleFilterClick.bind(this);
+    // this.handleFilterClick = this.handleFilterClick.bind(this);
     this.handleChangeInput = this.handleChangeInput.bind(this);
   }
 
-  handleFilterClick(e) {
+ /* handleFilterClick(e) {
     if (e.target.id === "back") {
         this.setState({
           tech: "Backend"
@@ -30,14 +30,14 @@ class Sidebar extends Component {
       })
       this.props.controlFilter(e);
     }
-  }
+  }*/
 
   handleChangeInput(e) {
     this.setState({
       text: e.target.value
-      
       //CONTENT.STATE.FILTERTEXT = TEXT!!!
     })
+    // alert(e.target.value);
     this.props.controlFilter(e);
     // Content.state.text = this.state.text;
     
@@ -59,16 +59,16 @@ class Sidebar extends Component {
         <form>
           <div className="radio">
             <label>
-              <input id="front" type="radio" value="option1" 
-              onClick={this.handleFilterClick} />
+              <input id="front" type="radio" value='Frontend' name="technologie"
+              onClick={this.handleChangeInput} />
               Frontend
             </label>
           </div>
           <div className="radio">
             <label>
               <br/>
-              <input id="back" type="radio" value="option2"
-              onClick={this.handleFilterClick} />
+              <input id="back" type="radio" value='Backend' name="technologie"
+              onClick={this.handleChangeInput} />
               Backend
             </label>
           </div>

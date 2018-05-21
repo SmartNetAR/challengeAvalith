@@ -12,7 +12,7 @@ class PostDetails extends Component {
     this.handleClickDetails = this.handleClickDetails.bind(this);
   }
   static propTypes ={
-      id: PropTypes.string.isRequired, 
+      id: PropTypes.number.isRequired, 
       title: PropTypes.string.isRequired,
       details: PropTypes.string.isRequired,
       technology: PropTypes.array.isRequired, 

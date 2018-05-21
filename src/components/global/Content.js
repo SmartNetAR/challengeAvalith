@@ -26,7 +26,7 @@ class Content extends Component {
   }
 
   FilterArray () {
-    var tmpArray = new Array;
+    /*var tmpArray = new Array;
     if (this.props.filtro !== '') {
       for (var i = 0; i < jsonRecived.length; i++ ) {
         if (jsonRecived[i].cardTitle === this.props.filtro) {
@@ -35,8 +35,25 @@ class Content extends Component {
       }
     } else {
       tmpArray = jsonRecived;
+    }*/ 
+    let aux = new Array;
+    if (this.props.filtro === "Backend" || this.props.filtro === "Frontend") {
+      // aux = jsonRecived[cardTechnology]
+        jsonRecived.forEach((element) =>{
+          // recorrer el cardtechnologies
+          
+          if(element.cardTechnology.find((e) => e == this.props.filtro)){
+    
+            aux.push(element)
+          }
+            //console.log('aaa '+aux)
+        })
+    } else {    
+       aux = jsonRecived.filter((e) => 
+      e.cardTitle.toLowerCase().indexOf(this.props.filtro.toLowerCase()) >= 0);
     }
-    return tmpArray;
+   
+    return aux;
   }
 
   CardSelect(e){
