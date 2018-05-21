@@ -9,8 +9,12 @@ import Sidebar from './global/Sidebar';
 class App extends Component {
   constructor() {
     super();
-    this.state = { filter: "" };
+    this.state = { 
+      filter: "",
+      mode: "Dashboard" 
+    };
     this.filtrar = this.filtrar.bind(this);
+    this.reset = this.reset.bind(this);
   }
   
   filtrar(e){
@@ -26,13 +30,20 @@ class App extends Component {
     }
     // alert("Escribiendo " + this.state.filter);
   }
+
+  reset(e) {
+    this.setState({
+      filter: "", mode: "Dashboard"
+    })
+  }
+
   render() {
     return (
       
       <div className="App">
-        <Header />
+        <Header mode={this.reset}/>
         <Sidebar Filtering={this.filtrar}/>
-        <Content filtro={this.state.filter}/>        
+        <Content filtro={this.state.filter } mode={this.state.mode}/>        
       </div> 
     );
   }

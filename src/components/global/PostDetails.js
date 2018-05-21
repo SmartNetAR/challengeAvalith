@@ -9,7 +9,7 @@ class PostDetails extends Component {
     super();
 
 
-    // this.handleShowCard = this.handleShowCard.bind(this);
+    this.handleClickDetails = this.handleClickDetails.bind(this);
   }
   static propTypes ={
       id: PropTypes.string.isRequired, 
@@ -19,6 +19,9 @@ class PostDetails extends Component {
       imageUrl: PropTypes.string
   };
 
+  handleClickDetails(e) {
+    this.props.onClick(e);
+  }
 
   render() {
     const { id, title, details, technology, imageUrl} = this.props;
@@ -26,7 +29,7 @@ class PostDetails extends Component {
     // var filterCards = new Array;
     return (
       <div className="PostDetails">
-        <img id={id} src={imageUrl} alt={title} onClick={this.handleShowCard} />
+        <img id="DetailReturn" src={imageUrl} alt={title} onClick={this.handleClickDetails} />
         <div className="Title">
           <p>{`${details}`}</p>
         </div>

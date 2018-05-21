@@ -10,7 +10,7 @@ import Card from './Card';
 
 class Content extends Component {
   static propTypes = {
-    filtro: PropTypes.string,
+    filtro: PropTypes.string
     // cardSelected: PropTypes.string
   };
 
@@ -20,14 +20,9 @@ class Content extends Component {
     this.state = {
       mode: "Dashboard",
       cardSelected: 0
-      // filterText: "CSS"
     };
 
     this.CardSelect = this.CardSelect.bind(this);
-  }
-
-  componentDidMount() {
-    // this.setState.filterText = filtro;
   }
 
   FilterArray () {
@@ -36,7 +31,6 @@ class Content extends Component {
       for (var i = 0; i < jsonRecived.length; i++ ) {
         if (jsonRecived[i].cardTitle === this.props.filtro) {
           tmpArray.push(jsonRecived[i]);
-          console.log(jsonRecived[i]);
         }
       }
     } else {
@@ -46,12 +40,17 @@ class Content extends Component {
   }
 
   CardSelect(e){
-    alert("tarjeta seleccionada: " + e.target.id);
-    this.setState({
-      mode: "PostDetails",
-      cardSelected: e.target.id
-    });
-    // this.props.cardSelected = e.target.id;
+    if (e.target.id === "DetailReturn") {
+      this.setState({
+        mode: "Dashboard"
+      });
+    }
+    if (e.target.id > 0) {
+      this.setState({
+        mode: "PostDetails",
+        cardSelected: e.target.id
+      });
+    }
   }
 
   render() {
@@ -73,7 +72,8 @@ class Content extends Component {
           title= {jsonRecived[this.state.cardSelected -1].cardTitle} 
           details={jsonRecived[this.state.cardSelected -1].cardDescription}
           technology={jsonRecived[this.state.cardSelected -1].cardTechnology}
-          imageUrl={jsonRecived[this.state.cardSelected -1].cardImageUrl}/>
+          imageUrl={jsonRecived[this.state.cardSelected -1].cardImageUrl} 
+          onClick={this.CardSelect}/>
         </div>
       )
     }

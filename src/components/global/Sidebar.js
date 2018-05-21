@@ -23,7 +23,7 @@ class Sidebar extends Component {
     return (
       <div className="sidenav">
         <div className="devname">
-          <div className="font-dev-name"><p>DEV NAME</p></div>
+          <div className="font-dev-name"><p>LEONARDO CASALES</p></div>
           <div className="font-dev-details">
             <p>DNI 30.195.728</p>
             <p>35 YEARS OLD</p>
