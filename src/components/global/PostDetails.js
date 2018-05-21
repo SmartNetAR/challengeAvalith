@@ -5,18 +5,36 @@ import PropTypes from 'prop-types';
 
 
 class PostDetails extends Component {
+  constructor(){
+    super();
+
+
+    // this.handleShowCard = this.handleShowCard.bind(this);
+  }
   static propTypes ={
-    title: PropTypes.string.isRequired,
-    cards: PropTypes.array};
+      id: PropTypes.string.isRequired, 
+      title: PropTypes.string.isRequired,
+      details: PropTypes.string.isRequired,
+      technology: PropTypes.array.isRequired, 
+      imageUrl: PropTypes.string
+  };
+
 
   render() {
-    const {title, cards} = this.props;
+    const { id, title, details, technology, imageUrl} = this.props;
     // var myCards = new Map(cards);
     // var filterCards = new Array;
     return (
       <div className="PostDetails">
-        <header className="Title">{`${title}`}</header>
-      </div>
+        <img id={id} src={imageUrl} alt={title} onClick={this.handleShowCard} />
+        <div className="Title">
+          <p>{`${details}`}</p>
+        </div>
+      </div> 
+      // <div className="PostDetails">
+      //   <header className="Title">{`${title}`}</header>
+      //   <p>{id}</p>
+      // </div>
     );
   }
 }

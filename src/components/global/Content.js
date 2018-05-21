@@ -5,11 +5,13 @@ import PropTypes from 'prop-types';
 import jsonRecived from '../../data/cards.json'
 import CardsContainer from './CardsContainer';
 import PostDetails from './PostDetails';
+import Card from './Card';
 
 
 class Content extends Component {
   static propTypes = {
-    filtro: PropTypes.string
+    filtro: PropTypes.string,
+    // cardSelected: PropTypes.string
   };
 
   constructor () {
@@ -17,8 +19,11 @@ class Content extends Component {
 
     this.state = {
       mode: "Dashboard",
+      cardSelected: 0
       // filterText: "CSS"
     };
+
+    this.CardSelect = this.CardSelect.bind(this);
   }
 
   componentDidMount() {
@@ -40,20 +45,36 @@ class Content extends Component {
     return tmpArray;
   }
 
+  CardSelect(e){
+    alert("tarjeta seleccionada: " + e.target.id);
+    this.setState({
+      mode: "PostDetails",
+      cardSelected: e.target.id
+    });
+    // this.props.cardSelected = e.target.id;
+  }
+
   render() {
-    const {filtro} = this.props;
+    const {filtro, cardSelected} = this.props;
     if ( this.state.mode === "Dashboard" ) {
       var arrayCards = this.FilterArray();
 
       return (
         <div className="Content">
-          <CardsContainer cards={arrayCards} />
+          <CardsContainer cards={arrayCards} onClick={this.CardSelect}/>
 
         </div> 
       );
     }else {
       return (
-        <PostDetails title={this.state.filterText}/>
+        <div className="Content">
+
+          <PostDetails id= {jsonRecived[this.state.cardSelected -1].cardId}
+          title= {jsonRecived[this.state.cardSelected -1].cardTitle} 
+          details={jsonRecived[this.state.cardSelected -1].cardDescription}
+          technology={jsonRecived[this.state.cardSelected -1].cardTechnology}
+          imageUrl={jsonRecived[this.state.cardSelected -1].cardImageUrl}/>
+        </div>
       )
     }
   }

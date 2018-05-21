@@ -5,8 +5,16 @@ import PropTypes from 'prop-types';
 
 
 class CardsContainer extends Component {
+  constructor() {
+    super();
+    this.ShowCard = this.ShowCard.bind(this);
+  }
+
   static propTypes ={cards: PropTypes.array.isRequired};
 
+  ShowCard(e){
+    this.props.onClick(e);
+  }
   render() {
     const {cards} = this.props;
     // var myCards = new Map(cards);
@@ -31,10 +39,12 @@ class CardsContainer extends Component {
             // if (item.cardTechnology !== 'Frontend'){
           <Card 
             key= {key}
+            id= {item.cardId}
             title= {item.cardTitle} 
             details={item.cardDescription}
             technology={item.cardTechnology}
-            imageUrl={item.cardImageUrl}/>
+            imageUrl={item.cardImageUrl}
+            onClick={this.ShowCard}/>
             // }
           )
         )}

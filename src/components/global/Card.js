@@ -4,18 +4,29 @@ import './css/Card.css';
 
 
 class Card extends Component {
+  constructor(){
+    super();
+
+
+    this.handleShowCard = this.handleShowCard.bind(this);
+  }
   static propTypes ={
+      id: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
       details: PropTypes.string.isRequired,
       technology: PropTypes.array.isRequired, 
       imageUrl: PropTypes.string
   };
 
+  handleShowCard(e){
+    this.props.onClick(e);
+  }
+
   render() {
-    const { title, details, technology, imageUrl } = this.props;
+    const { id, title, details, technology, imageUrl } = this.props;
     return (
       <div className="card">
-        <img src={imageUrl} alt={title} />
+        <img id={id} src={imageUrl} alt={title} onClick={this.handleShowCard} />
         <div className="text">
           <p>{`${details}`}</p>
         </div>
