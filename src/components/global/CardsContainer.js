@@ -20,7 +20,7 @@ class CardsContainer extends Component {
     // var myCards = new Map(cards);
     // var filterCards = new Array;
     return (
-      <div className="CardsContainer">
+      <div className={`CardsContainer ${ true ? 'active' : '' }`}>
         <header className="Title">LANGUAGES & TECHNOLOGIES</header>
         {/* {filterCards = myCards.filter( (item, key) => 
           item.cardTechnology == "Frontend").map( (item, key) => (

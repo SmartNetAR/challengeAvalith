@@ -3,6 +3,9 @@ import './css/Controls.css';
 import Content from './Content';
 // import { Checkbox, ButtonGroup, Button } from 'react-bootstrap';
 
+
+// import {orange500, blue500} from 'material-ui/styles/colors';
+
 class Sidebar extends Component {
   constructor() {
     super(); //para que pueda acceder al obj
@@ -16,22 +19,6 @@ class Sidebar extends Component {
     this.handleChangeInput = this.handleChangeInput.bind(this);
   }
 
- /* handleFilterClick(e) {
-    if (e.target.id === "back") {
-        this.setState({
-          tech: "Backend"
-          
-          //CONTENT.STATE
-        })
-        this.props.controlFilter(e);
-    }else {
-      this.setState({
-        tech: "Frontend"
-      })
-      this.props.controlFilter(e);
-    }
-  }*/
-
   handleChangeInput(e) {
     // this.setState({
     //   text: e.target.value
@@ -40,7 +27,6 @@ class Sidebar extends Component {
     // alert(e.target.value);
     this.props.controlFilter(e);
     // Content.state.text = this.state.text;
-    
   }
 
   componentDidMount() {
@@ -48,12 +34,33 @@ class Sidebar extends Component {
   }
 
   render() {
+    // const styles = {
+    //   errorStyle: {
+    //     color: 'white',
+    //     backgroundColor: "red",
+    //     // color: orange500,
+    //   },
+    // }
     return (
       <div className="controls">
-        <div className="editSearch">
+         <div className="editSearch">
           <input id="txtSearch" placeholder='Search in cards'
           onChange={this.handleChangeInput}></input>
         </div>
+        {/* <TextField 
+        label='Search in Cards'
+        /> */}
+        {/* <TextField
+          hintText="Hint Text"
+        /> */}
+        {/* 
+        <TextField 
+          // label="Search in Cards" 
+          hintText="Hint Text"
+          inputStyle={{ backgroundColor: 'white' }} 
+          // color="white"
+          onChange={this.handleChangeInput}/>
+        <div > */}
         <p>Filter by:</p>
         {/* <p>{`filtrado por: ${this.state.tech} y ${this.state.text}`}</p> */}
         <form>
@@ -73,7 +80,8 @@ class Sidebar extends Component {
             </label>
           </div>
         </form>
-      </div> 
+        </div>
+      // </div> 
     );
   }
 }

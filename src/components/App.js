@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-
+import './App.css'
 //componentes
+
 import Header from './global/Header';
 import Content from './global/Content';
 // import { Grid, Row, Col, Navbar } from 'react-bootstrap';
 import Sidebar from './global/Sidebar';
+// import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 class App extends Component {
   constructor() {

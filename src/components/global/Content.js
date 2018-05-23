@@ -76,7 +76,7 @@ class Content extends Component {
       var arrayCards = this.FilterArray();
 
       return (
-        <div className="Content">
+        <div className="Content active">
           <CardsContainer cards={arrayCards} onClick={this.CardSelect}/>
 
         </div> 

@@ -1,9 +1,0 @@
-.Main {
-  float: left;
-  margin-top: 20px;
-  /* width: 325px; */
-  width: calc(100% / 2 - 20px);
-  background-color: white;
-  margin: 10px;
-  /* margin-right: 15px; */
-}
