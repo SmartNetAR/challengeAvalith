@@ -7,10 +7,10 @@ class Sidebar extends Component {
   constructor() {
     super(); //para que pueda acceder al obj
     
-    this.state = {
-      tech: "Frontend",
-      text: ""
-    };
+    // this.state = {
+    //   tech: "Frontend",
+    //   text: ""
+    // };
 
     // this.handleFilterClick = this.handleFilterClick.bind(this);
     this.handleChangeInput = this.handleChangeInput.bind(this);
@@ -33,10 +33,10 @@ class Sidebar extends Component {
   }*/
 
   handleChangeInput(e) {
-    this.setState({
-      text: e.target.value
-      //CONTENT.STATE.FILTERTEXT = TEXT!!!
-    })
+    // this.setState({
+    //   text: e.target.value
+    //   //CONTENT.STATE.FILTERTEXT = TEXT!!!
+    // })
     // alert(e.target.value);
     this.props.controlFilter(e);
     // Content.state.text = this.state.text;

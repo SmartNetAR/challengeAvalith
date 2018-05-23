@@ -44,7 +44,7 @@ class CardsContainer extends Component {
             details={item.cardDescription}
             technology={item.cardTechnology}
             imageUrl={item.cardImageUrl}
-            onClick={this.ShowCard}/>
+            onCardClick={this.ShowCard}/>
             // }
           )
         )}

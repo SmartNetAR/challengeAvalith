@@ -11,52 +11,51 @@ class App extends Component {
     super();
     this.state = { 
       filter: "",
+      visibleBar: true
       // mode: "Dashboard" 
     };
     this.filtrar = this.filtrar.bind(this);
-    this.reset = this.reset.bind(this);
+    this.setVisibleBar = this.setVisibleBar.bind(this);
   }
 
   
   
   filtrar(e){
-    // if (e.target.id === "txtSearch") {
-      
-      this.setState({
-        filter: e.target.value
-      })
-  }
-
-  reset(e) {
     this.setState({
-      filter: "", mode: "Dashboard"
+      filter: e.target.value
     })
   }
 
-  sideIsVisible() {
-    const visibleBar = true;    
-    alert ("show bar");
-    if (visibleBar === true) {
-      alert ("show bar");
-      return <Sidebar Filtering={this.filtrar}/> 
-      
-    }
-    
-    // return <Sidebar/>
+  setVisibleBar(e) {
+    this.setState({
+      visibleBar: !this.state.visibleBar
+    })
+    // alert("ser visible bar");
   }
+
+  // sideIsVisible() {
+  //   const visibleBar = true;    
+  //   alert ("show bar");
+  //   if (visibleBar === true) {
+  //     alert ("show bar");
+  //     return <Sidebar Filtering={this.filtrar}/>       
+  //   }
+  // }
+
   render() {
-    const visibleBar = true;
-    const bar = visibleBar ? (<Sidebar Filtering={this.filtrar}/>
+    const visibleBar = this.state.visibleBar;
+    const bar = visibleBar ? (
+      <Sidebar Filtering={this.filtrar} logoHideBar={this.state.visibleBar}/>
     ) : <div></div> 
     return (
       
       <div className="App">
-        <Header mode={this.reset}/>
+        <Header clickHideBar={this.setVisibleBar}/>
         {bar}
         {/* <Sidebar Filtering={this.filtrar}/> */}
 
 
-        <Content filtro={this.state.filter } mode={this.state.mode}/>        
+        <Content filtro={this.state.filter } logoHideBar={this.state.mode}/>        
       </div> 
     );
   }

@@ -19,7 +19,7 @@ class Card extends Component {
   };
 
   handleShowCard(e){
-    this.props.onClick(e);
+    this.props.onCardClick(e);
   }
 
   render() {
