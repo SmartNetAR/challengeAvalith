@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import logo from './media/logo.png';
+import PropTypes from 'prop-types';
 import './css/Header.css';
 
 class Header extends Component {
@@ -10,9 +11,11 @@ class Header extends Component {
   }
 
   handleClickLogo(e) {
-
+    this.props.clickHideBar(e);
   }
+
   render() {
+    // const {logoHideBar} = this.props;
     return (
       <div className="Header">
         <img src={logo} alt="logo" onClick={this.handleClickLogo} />

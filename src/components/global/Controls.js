@@ -1,81 +1,52 @@
 import React, { Component } from 'react';
 import './css/Controls.css';
 import Content from './Content';
-// import { Checkbox, ButtonGroup, Button } from 'react-bootstrap';
+import TextField from '@material-ui/core/TextField'
 
-class Sidebar extends Component {
+class Controls extends Component {
   constructor() {
-    super(); //para que pueda acceder al obj
-    
-    this.state = {
-      tech: "Frontend",
-      text: ""
-    };
-
-    // this.handleFilterClick = this.handleFilterClick.bind(this);
+    super(); 
     this.handleChangeInput = this.handleChangeInput.bind(this);
   }
 
- /* handleFilterClick(e) {
-    if (e.target.id === "back") {
-        this.setState({
-          tech: "Backend"
-          
-          //CONTENT.STATE
-        })
-        this.props.controlFilter(e);
-    }else {
-      this.setState({
-        tech: "Frontend"
-      })
-      this.props.controlFilter(e);
-    }
-  }*/
-
   handleChangeInput(e) {
-    this.setState({
-      text: e.target.value
-      //CONTENT.STATE.FILTERTEXT = TEXT!!!
-    })
-    // alert(e.target.value);
     this.props.controlFilter(e);
-    // Content.state.text = this.state.text;
-    
-  }
-
-  componentDidMount() {
-    
   }
 
   render() {
     return (
       <div className="controls">
-        <div className="editSearch">
+         {/* <div className="editSearch">
           <input id="txtSearch" placeholder='Search in cards'
           onChange={this.handleChangeInput}></input>
-        </div>
-        <p>Filter by:</p>
-        {/* <p>{`filtrado por: ${this.state.tech} y ${this.state.text}`}</p> */}
-        <form>
-          <div className="radio">
+        </div> */}
+        {/* <div className="editSearch"> */}
+          <TextField 
+            className="editSearch"
+            label="Search in Cards" 
+            placeholder="Search in Cards"
+            onChange={this.handleChangeInput}/>
+        {/* </div> */}
+        <div className="radio">
+          <p>Filter by:</p>
+          <form>
             <label>
               <input id="front" type="radio" value='Frontend' name="technologie"
               onClick={this.handleChangeInput} />
               Frontend
             </label>
-          </div>
-          <div className="radio">
             <label>
               <br/>
               <input id="back" type="radio" value='Backend' name="technologie"
               onClick={this.handleChangeInput} />
               Backend
             </label>
-          </div>
-        </form>
-      </div> 
+          </form>
+        </div>
+        </div>
+      //</div> 
     );
   }
 }
 
-export default Sidebar;
+export default Controls;

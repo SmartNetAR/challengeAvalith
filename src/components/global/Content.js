@@ -7,10 +7,12 @@ import CardsContainer from './CardsContainer';
 import PostDetails from './PostDetails';
 import Card from './Card';
 
+//logoHideBar
 
 class Content extends Component {
   static propTypes = {
-    filtro: PropTypes.string
+    filtro: PropTypes.string,
+    visibleBar: PropTypes.bool
     // cardSelected: PropTypes.string
   };
 
@@ -23,6 +25,7 @@ class Content extends Component {
     };
 
     this.CardSelect = this.CardSelect.bind(this);
+    this.OpenDashboard = this.OpenDashboard.bind(this);
   }
 
   FilterArray () {
@@ -57,11 +60,6 @@ class Content extends Component {
   }
 
   CardSelect(e){
-    if (e.target.id === "DetailReturn") {
-      this.setState({
-        mode: "Dashboard"
-      });
-    }
     if (e.target.id > 0) {
       this.setState({
         mode: "PostDetails",
@@ -70,28 +68,54 @@ class Content extends Component {
     }
   }
 
+  OpenDashboard(e){
+    // if (e === "goback") { // "DetailReturn") {
+      this.setState({
+        mode: "Dashboard"
+      });
+    // }
+  }
+
   render() {
-    const {filtro, cardSelected} = this.props;
+    const {filtro, visibleBar} = this.props;
+
     if ( this.state.mode === "Dashboard" ) {
       var arrayCards = this.FilterArray();
 
-      return (
-        <div className="Content">
-          <CardsContainer cards={arrayCards} onClick={this.CardSelect}/>
+      const bar = visibleBar ? (        
+        <div className="Content active">
+          <CardsContainer cards={arrayCards} onClick={this.CardSelect}/> </div> 
+      ) : 
+        <div className="Content inactive">
+          <CardsContainer cards={arrayCards} onClick={this.CardSelect}/> </div> 
 
-        </div> 
+      return (  
+        bar
       );
     }else {
-      return (
-        <div className="Content">
 
+      const bar = visibleBar ? (        
+        <div className="Content active">
+          <PostDetails id= {jsonRecived[this.state.cardSelected -1].cardId}
+          title= {jsonRecived[this.state.cardSelected -1].cardTitle} 
+          details={jsonRecived[this.state.cardSelected -1].cardDescription}
+          technology={jsonRecived[this.state.cardSelected -1].cardTechnology}
+          imageUrl={jsonRecived[this.state.cardSelected -1].cardImageUrl} 
+          onClick={this.OpenDashboard}/>
+        </div> 
+      ) : 
+        <div className="Content inactive">
           <PostDetails id= {jsonRecived[this.state.cardSelected -1].cardId}
           title= {jsonRecived[this.state.cardSelected -1].cardTitle} 
           details={jsonRecived[this.state.cardSelected -1].cardDescription}
           technology={jsonRecived[this.state.cardSelected -1].cardTechnology}
           imageUrl={jsonRecived[this.state.cardSelected -1].cardImageUrl} 
           onClick={this.CardSelect}/>
-        </div>
+        </div> 
+
+      return (
+        bar
+
       )
     }
   }
