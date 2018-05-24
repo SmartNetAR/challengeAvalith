@@ -25,6 +25,7 @@ class Content extends Component {
     };
 
     this.CardSelect = this.CardSelect.bind(this);
+    this.OpenDashboard = this.OpenDashboard.bind(this);
   }
 
   FilterArray () {
@@ -59,17 +60,20 @@ class Content extends Component {
   }
 
   CardSelect(e){
-    if (e.target.id === "DetailReturn") {
-      this.setState({
-        mode: "Dashboard"
-      });
-    }
     if (e.target.id > 0) {
       this.setState({
         mode: "PostDetails",
         cardSelected: e.target.id
       });
     }
+  }
+
+  OpenDashboard(e){
+    // if (e === "goback") { // "DetailReturn") {
+      this.setState({
+        mode: "Dashboard"
+      });
+    // }
   }
 
   render() {
@@ -97,7 +101,7 @@ class Content extends Component {
           details={jsonRecived[this.state.cardSelected -1].cardDescription}
           technology={jsonRecived[this.state.cardSelected -1].cardTechnology}
           imageUrl={jsonRecived[this.state.cardSelected -1].cardImageUrl} 
-          onClick={this.CardSelect}/>
+          onClick={this.OpenDashboard}/>
         </div> 
       ) : 
         <div className="Content inactive">

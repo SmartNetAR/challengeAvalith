@@ -4,8 +4,13 @@
   background-color: whitesmoke;
 }
 
+  .PostDetails .Button {
+    /* color: "primary";   */
+    
+  }
+
   .PostDetails img {
-    width: 90%;
+    width: 100%;
   }
 
   .PostDetails .Title {
@@ -14,3 +19,4 @@
     letter-spacing: 0.2px;
     color: #020202;
   }
+
