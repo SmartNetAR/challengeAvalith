@@ -86,21 +86,32 @@ class Content extends Component {
           <CardsContainer cards={arrayCards} onClick={this.CardSelect}/> </div> 
 
       return (  
-        <div>      
-          {bar}
-        </div>
+        bar
       );
     }else {
-      return (
-        <div className="Content">
 
+      const bar = visibleBar ? (        
+        <div className="Content active">
           <PostDetails id= {jsonRecived[this.state.cardSelected -1].cardId}
           title= {jsonRecived[this.state.cardSelected -1].cardTitle} 
           details={jsonRecived[this.state.cardSelected -1].cardDescription}
           technology={jsonRecived[this.state.cardSelected -1].cardTechnology}
           imageUrl={jsonRecived[this.state.cardSelected -1].cardImageUrl} 
           onClick={this.CardSelect}/>
-        </div>
+        </div> 
+      ) : 
+        <div className="Content inactive">
+          <PostDetails id= {jsonRecived[this.state.cardSelected -1].cardId}
+          title= {jsonRecived[this.state.cardSelected -1].cardTitle} 
+          details={jsonRecived[this.state.cardSelected -1].cardDescription}
+          technology={jsonRecived[this.state.cardSelected -1].cardTechnology}
+          imageUrl={jsonRecived[this.state.cardSelected -1].cardImageUrl} 
+          onClick={this.CardSelect}/>
+        </div> 
+
+      return (
+        bar
+
       )
     }
   }

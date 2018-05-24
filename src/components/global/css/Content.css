@@ -3,20 +3,21 @@ body{
 }
 
 .Content {
-  
+  padding: 10px;
   /* margin-left: 300px; */
   float: initial;
-  padding-left: 30px;
+  /* padding-left: 30px; */
   padding-top: 75px;
   height: 100%;
-  width: 90%;
   /* background-color: whitesmoke; */
 }
 .Content.active{
   margin-left: 300px;
+  width: calc(100% - 320px)
 }
 .Content.inactive{
   margin-left: 0px;
+  width: calc(100% - 20px);
 }
   /* .Content .Title {
     font-size: 24px;
