@@ -57,7 +57,7 @@ class App extends Component {
         {/* <Sidebar Filtering={this.filtrar}/> */}
 
 
-        <Content filtro={this.state.filter } logoHideBar={this.state.mode}/>        
+        <Content filtro={this.state.filter } visibleBar={this.state.visibleBar}/>        
       </div> 
     );
   }

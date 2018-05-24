@@ -7,10 +7,12 @@ import CardsContainer from './CardsContainer';
 import PostDetails from './PostDetails';
 import Card from './Card';
 
+//logoHideBar
 
 class Content extends Component {
   static propTypes = {
-    filtro: PropTypes.string
+    filtro: PropTypes.string,
+    visibleBar: PropTypes.bool
     // cardSelected: PropTypes.string
   };
 
@@ -71,15 +73,22 @@ class Content extends Component {
   }
 
   render() {
-    const {filtro, cardSelected} = this.props;
+    const {filtro, visibleBar} = this.props;
+
     if ( this.state.mode === "Dashboard" ) {
       var arrayCards = this.FilterArray();
 
-      return (
+      const bar = visibleBar ? (        
         <div className="Content active">
-          <CardsContainer cards={arrayCards} onClick={this.CardSelect}/>
+          <CardsContainer cards={arrayCards} onClick={this.CardSelect}/> </div> 
+      ) : 
+        <div className="Content inactive">
+          <CardsContainer cards={arrayCards} onClick={this.CardSelect}/> </div> 
 
-        </div> 
+      return (  
+        <div>      
+          {bar}
+        </div>
       );
     }else {
       return (
