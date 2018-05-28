@@ -29,16 +29,6 @@ class Content extends Component {
   }
 
   FilterArray () {
-    /*var tmpArray = new Array;
-    if (this.props.filtro !== '') {
-      for (var i = 0; i < jsonRecived.length; i++ ) {
-        if (jsonRecived[i].cardTitle === this.props.filtro) {
-          tmpArray.push(jsonRecived[i]);
-        }
-      }
-    } else {
-      tmpArray = jsonRecived;
-    }*/ 
     let aux = new Array;
     if (this.props.filtro === "Backend" || this.props.filtro === "Frontend") {
       // aux = jsonRecived[cardTechnology]
@@ -69,49 +59,41 @@ class Content extends Component {
   }
 
   OpenDashboard(e){
-    // if (e === "goback") { // "DetailReturn") {
-      this.setState({
-        mode: "Dashboard"
-      });
-    // }
+    this.setState({
+      mode: "Dashboard"
+    });
   }
 
   render() {
     const {filtro, visibleBar} = this.props;
 
+
     if ( this.state.mode === "Dashboard" ) {
-      var arrayCards = this.FilterArray();
+      const arrayCards = this.FilterArray();
+      const showCardContainer = <CardsContainer cards={arrayCards} onClick={this.CardSelect}/>
 
       const bar = visibleBar ? (        
-        <div className="Content active">
-          <CardsContainer cards={arrayCards} onClick={this.CardSelect}/> </div> 
+        <div className="Content active">{showCardContainer}</div> 
       ) : 
-        <div className="Content inactive">
-          <CardsContainer cards={arrayCards} onClick={this.CardSelect}/> </div> 
+        <div className="Content inactive">{showCardContainer}</div>
 
       return (  
         bar
       );
     }else {
+      const arrayPos = this.state.cardSelected -1;
+      const showPostDetails = <PostDetails id= {jsonRecived[arrayPos].cardId}
+    title= {jsonRecived[arrayPos].cardTitle} 
+    postDescription={jsonRecived[arrayPos].cardPost.postDescription}
+    postTitle={jsonRecived[arrayPos].cardPost.postTitle}
+    imageUrl={jsonRecived[arrayPos].cardImageUrl} 
+    cardGraph = {jsonRecived[arrayPos].cardGraph.data}
+    onClick={this.OpenDashboard}/>
 
       const bar = visibleBar ? (        
-        <div className="Content active">
-          <PostDetails id= {jsonRecived[this.state.cardSelected -1].cardId}
-          title= {jsonRecived[this.state.cardSelected -1].cardTitle} 
-          details={jsonRecived[this.state.cardSelected -1].cardDescription}
-          technology={jsonRecived[this.state.cardSelected -1].cardTechnology}
-          imageUrl={jsonRecived[this.state.cardSelected -1].cardImageUrl} 
-          onClick={this.OpenDashboard}/>
-        </div> 
+        <div className="Content active">{showPostDetails}</div> 
       ) : 
-        <div className="Content inactive">
-          <PostDetails id= {jsonRecived[this.state.cardSelected -1].cardId}
-          title= {jsonRecived[this.state.cardSelected -1].cardTitle} 
-          details={jsonRecived[this.state.cardSelected -1].cardDescription}
-          technology={jsonRecived[this.state.cardSelected -1].cardTechnology}
-          imageUrl={jsonRecived[this.state.cardSelected -1].cardImageUrl} 
-          onClick={this.CardSelect}/>
-        </div> 
+        <div className="Content inactive">{showPostDetails}</div> 
 
       return (
         bar
