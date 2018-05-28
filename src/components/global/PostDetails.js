@@ -31,7 +31,6 @@ class PostDetails extends Component {
 
 
     this.handleClickDetails = this.handleClickDetails.bind(this);
-    this.setDataChart = this.setDataChart.bind(this);
 
   }
   static propTypes ={
@@ -47,21 +46,6 @@ class PostDetails extends Component {
     this.props.onClick(e);
   }
 
-  setDataChart(){
-    alert(this.props.cardGraph[0]);
-    let result = 
-    <div>
-      <p>{this.props.cardGraph[0]}, 
-      {this.props.cardGraph[1]}, 
-      {this.props.cardGraph[2]} </p>
-    </div>
-    
-    // this.data.datasets[0].data = this.props.cardGraph;
-    return(
-      result
-    )
-  }
-
 
   render() {
     const { id, title, postDescription, postTitle, imageUrl, cardGraph} = this.props;
@@ -70,23 +54,24 @@ class PostDetails extends Component {
     return (
       <div className="PostDetails">
         {this.setDataChart}
+        <div id="header" style={{backgroundImage: `url(${imageUrl})` }}>
         <Button
         className="Button"
         id="goback"
         variant="raised"
-        color="primary"         
-        // onClick={() => this.handleClickDetails()}
+        color="primary"
         onClick= {this.handleClickDetails}
         >
         Go Back
         </Button>
-
-        <img id="imagePost" src={imageUrl} alt={title}/>
+        </div>
+        {/* <img id="imagePost" src={imageUrl} alt={title}/> */}
         <div className="Title">
           <p>{`${postDescription}`}</p>
-        </div>
-        <h2>{postTitle}</h2>
+          <h2>{postTitle}</h2>
         <Doughnut  data={data} />
+        </div>
+
       </div>
     );
   }

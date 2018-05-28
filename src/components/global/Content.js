@@ -70,7 +70,8 @@ class Content extends Component {
 
     if ( this.state.mode === "Dashboard" ) {
       const arrayCards = this.FilterArray();
-      const showCardContainer = <CardsContainer cards={arrayCards} onClick={this.CardSelect}/>
+      const showCardContainer = <CardsContainer cards={arrayCards} 
+        onClick={this.CardSelect}/>
 
       const bar = visibleBar ? (        
         <div className="Content active">{showCardContainer}</div> 
@@ -86,7 +87,7 @@ class Content extends Component {
     title= {jsonRecived[arrayPos].cardTitle} 
     postDescription={jsonRecived[arrayPos].cardPost.postDescription}
     postTitle={jsonRecived[arrayPos].cardPost.postTitle}
-    imageUrl={jsonRecived[arrayPos].cardImageUrl} 
+    imageUrl={jsonRecived[arrayPos].cardPost.postImageUrl} 
     cardGraph = {jsonRecived[arrayPos].cardGraph.data}
     onClick={this.OpenDashboard}/>
 

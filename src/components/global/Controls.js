@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import './css/Controls.css';
 import Content from './Content';
-import TextField from '@material-ui/core/TextField'
+import TextField from '@material-ui/core/TextField';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
 
 class Controls extends Component {
   constructor() {
@@ -15,7 +19,7 @@ class Controls extends Component {
 
   render() {
     return (
-      <div className="controls">
+      <div className="controls"> {/*</div> style={{backgroundColor:"white"}}>*/}
          {/* <div className="editSearch">
           <input id="txtSearch" placeholder='Search in cards'
           onChange={this.handleChangeInput}></input>
@@ -43,6 +47,23 @@ class Controls extends Component {
             </label>
           </form>
         </div>
+
+
+
+<RadioGroup
+            aria-label="gender"
+            name="gender1"
+            // // className={classes.group}
+            // value={this.state.value}
+            // onChange={this.handleChange}
+          >
+            <FormControlLabel value='Frontend' name="technologie" control={<Radio />} label="Frontend" />
+            <FormControlLabel value='Backend' name="technologie" control={<Radio />} label="Backend" />
+
+          </RadioGroup>
+
+
+
         </div>
       //</div> 
     );
