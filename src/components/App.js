@@ -12,19 +12,22 @@ class App extends Component {
   constructor() {
     super();
     this.state = { 
-      filter: "",
+      filterText: "",
+      filterTech: "",
       visibleBar: true
-      // mode: "Dashboard" 
     };
-    this.filtrar = this.filtrar.bind(this);
     this.setVisibleBar = this.setVisibleBar.bind(this);
   }
 
-  
-  
-  filtrar(e){
+  filterByText = event => {
     this.setState({
-      filter: e.target.value
+      filterText: event.target.value
+    })
+  }
+
+  filterByRadio = event => {                                                                                               
+    this.setState({
+      filterTech: event.target.value
     })
   }
 
@@ -32,32 +35,26 @@ class App extends Component {
     this.setState({
       visibleBar: !this.state.visibleBar
     })
-    // alert("ser visible bar");
   }
-
-  // sideIsVisible() {
-  //   const visibleBar = true;    
-  //   alert ("show bar");
-  //   if (visibleBar === true) {
-  //     alert ("show bar");
-  //     return <Sidebar Filtering={this.filtrar}/>       
-  //   }
-  // }
 
   render() {
     const visibleBar = this.state.visibleBar;
     const bar = visibleBar ? (
-      <Sidebar Filtering={this.filtrar} logoHideBar={this.state.visibleBar}/>
+      <Sidebar 
+        filterByText={this.filterByText}
+        filterByRadio={this.filterByRadio}
+        logoHideBar={this.state.visibleBar}/>
     ) : <div></div> 
     return (
       
       <div className="App">
         <Header clickHideBar={this.setVisibleBar}/>
         {bar}
-        {/* <Sidebar Filtering={this.filtrar}/> */}
 
-
-        <Content filtro={this.state.filter } visibleBar={this.state.visibleBar}/>        
+        <Content
+          filterText= {this.state.filterText} 
+          filterTech= {this.state.filterTech} 
+          visibleBar={this.state.visibleBar}/>        
       </div> 
     );
   }

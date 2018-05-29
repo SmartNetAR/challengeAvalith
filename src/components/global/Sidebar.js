@@ -8,15 +8,27 @@ class Sidebar extends Component {
     this.state = {
     };
 
-    this.filtrar = this.filtrar.bind(this);
+    // this.filtrar = this.filtrar.bind(this);
   }
 
   componentDidMount() {
 
   }
 
-  filtrar(e){
-    this.props.Filtering(e);
+  // filtrar(e){
+  //   this.props.Filtering(e);
+  // }
+
+  // filtrar = event => {
+  //   this.props.Filtering(event);
+  // }
+
+  filterByText = event => {
+    this.props.filterByText(event);
+  }
+
+  filterByRadio = event => {
+    this.props.filterByRadio(event);
   }
   
   render() {
@@ -30,7 +42,10 @@ class Sidebar extends Component {
           </div>
         </div>
         
-        <Controls controlFilter={this.filtrar}/>
+        <Controls 
+          // controlFilter={this.filtrar} 
+          filterByText={this.filterByText} 
+          filterByRadio={this.filterByRadio} />
 
 
       </div> 
