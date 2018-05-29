@@ -12,8 +12,9 @@ import Card from './Card';
 class Content extends Component {
   static propTypes = {
     filtro: PropTypes.string,
+    filterText: PropTypes.string,
+    filterTech: PropTypes.string,
     visibleBar: PropTypes.bool
-    // cardSelected: PropTypes.string
   };
 
   constructor () {
@@ -28,22 +29,45 @@ class Content extends Component {
     this.OpenDashboard = this.OpenDashboard.bind(this);
   }
 
+  // FilterArray () {
+  //   let aux = new Array;
+  //   if (this.props.filtro === "Backend" || this.props.filtro === "Frontend") {
+  //       jsonRecived.forEach((element) =>{
+  //         if(element.cardTechnology.find((e) => e == this.props.filtro)){
+  //               aux.push(element)
+  //         }
+  //       })
+  //   } else {    
+  //      aux = jsonRecived.filter((e) => 
+  //     e.cardTitle.toLowerCase().indexOf(this.props.filtro.toLowerCase()) >= 0);
+  //   }
+   
+  //   return aux;
+  // }
+
   FilterArray () {
     let aux = new Array;
-    if (this.props.filtro === "Backend" || this.props.filtro === "Frontend") {
-      // aux = jsonRecived[cardTechnology]
+    if (this.props.filterTech === "Backend") {
         jsonRecived.forEach((element) =>{
-          // recorrer el cardtechnologies
-          
-          if(element.cardTechnology.find((e) => e == this.props.filtro)){
-    
-            aux.push(element)
+          if(element.cardTechnology.find((e) => e == this.props.filterTech)){
+                aux.push(element)
           }
-            //console.log('aaa '+aux)
         })
+      //tambien filtro el texto
+      aux = aux.filter((e) => 
+      e.cardTitle.toLowerCase().indexOf(this.props.filterText.toLowerCase()) >= 0);
+    } else if ( this.props.filterTech === "Frontend") {
+      jsonRecived.forEach((element) =>{
+        if(element.cardTechnology.find((e) => e == this.props.filterTech)){
+              aux.push(element)
+        }
+      })
+      //tambien filtro el texto
+      aux = aux.filter((e) => 
+      e.cardTitle.toLowerCase().indexOf(this.props.filterText.toLowerCase()) >= 0);
     } else {    
        aux = jsonRecived.filter((e) => 
-      e.cardTitle.toLowerCase().indexOf(this.props.filtro.toLowerCase()) >= 0);
+      e.cardTitle.toLowerCase().indexOf(this.props.filterText.toLowerCase()) >= 0);
     }
    
     return aux;
@@ -65,7 +89,7 @@ class Content extends Component {
   }
 
   render() {
-    const {filtro, visibleBar} = this.props;
+    const {filtro, filterText, filterTech, visibleBar} = this.props;
 
 
     if ( this.state.mode === "Dashboard" ) {

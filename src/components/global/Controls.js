@@ -9,24 +9,24 @@ import FormControl from '@material-ui/core/FormControl';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 // import WithTheme from './WithTheme';
 
-const styles = theme => ({
-  container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
-  cssLabel: {
-    '&$cssFocused': {
-      color: '#ffffff',
-    },
-  },
-  cssFocused: {},
-  cssUnderline: {
-    '&:after': {
-      borderBottomColor: '#ffffff',
-    },
-  },
+// const styles = theme => ({
+//   container: {
+//     display: 'flex',
+//     flexWrap: 'wrap',
+//   },
+//   cssLabel: {
+//     '&$cssFocused': {
+//       color: '#ffffff',
+//     },
+//   },
+//   cssFocused: {},
+//   cssUnderline: {
+//     '&:after': {
+//       borderBottomColor: '#ffffff',
+//     },
+//   },
 
-});
+// });
 
 const theme = createMuiTheme({
   palette: {
@@ -41,19 +41,23 @@ class Controls extends Component {
   constructor() {
     super(); 
 
-    this.handleChangeInput = this.handleChangeInput.bind(this);
+    // this.handleChangeInput = this.handleChangeInput.bind(this);
+    // this.handleChangeRadio = this.handleChangeRadio.bind(this);
   }
   state = {
-    value: '',
-    color: 'primary'
+    value: ''
   };
-  handleChangeInput(e) {
-    this.props.controlFilter(e);
-  }
+  // handleChangeInput(e) {
+  //   this.props.controlFilter(e);
+  // }
+  handleChangeInput = event => {
+    this.props.filterByText(event);
+  };
 
-  handleChange = event => {
+  handleChangeRadio = event => {
+    this.props.filterByRadio(event);
     this.setState({ value: event.target.value });
-    this.props.controlFilter(event);
+    
   };
 
   render() {
@@ -61,31 +65,31 @@ class Controls extends Component {
       <div className="controls" > {/*</div> style={{backgroundColor:"white"}}>*/}
         <MuiThemeProvider theme={theme}>
           <TextField
+            // id="text"
+            name="text"
             className="editSearch"
             // label="Search in Cards"
             placeholder="Search in Cards"
             onChange={this.handleChangeInput}/>
-        <div className="radio">
-          <p>Filter by:</p>
-          {/* <FormLabel component="legend">Filter by</FormLabel> */}
-          
-          <RadioGroup
-            aria-label="gender"
-            name="gender1"
-            // // className={classes.group}
-            value={this.state.value}
-            onChange={this.handleChange}
-          >
-            <FormControlLabel id="front" value='Frontend' name="technologie" control={<Radio color="white" />} label="Frontend" />
-            <FormControlLabel id="back" value='Backend' name="technologie" control={<Radio  color="white" />} label="Backend" />
+          <div className="radio">
+            <p>Filter by:</p>
+            {/* <FormLabel component="legend">Filter by</FormLabel> */}
+            
+            <RadioGroup
+              aria-label="gender"
+              // name="groupTech"
+              // // className={classes.group}
+              value={this.state.value}
+              onChange={this.handleChangeRadio}
+              
+            >
+              <FormControlLabel value='Frontend' control={<Radio color="white" />} label="Frontend" />
+              <FormControlLabel value='Backend' control={<Radio  color="white" />} label="Backend" />
 
-          </RadioGroup>
-          
-
-
-      </div>
+            </RadioGroup>
+          </div>
       </MuiThemeProvider>
-        </div>
+    </div>
     );
   }
 }
